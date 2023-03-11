@@ -7,22 +7,8 @@ import math
 import torch.nn as nn
 
 
-def compute_img_diff(image_1, image_2, bound=255.0):
-    image_diff = np.asarray(image_1, dtype=np.float) - np.asarray(image_2, dtype=np.float)
-    image_diff += bound
-    image_diff *= (255.0 / float(2 * bound))
-    image_diff = image_diff.astype(np.uint8)
-    return image_diff
-
-
 def make_dataset(source_path, file_name, mapping):
-    """
-    Here, we predict the gaze for the last frame. Usually (in make_dataset()), we predict for middle frame.
-    """
-    # assert enable_time is True
 
-    # assert seq_len > 0
-    # assert seq_len % 2 == 1 or enable_time is False
     images = []
     enable_time = True
     print(file_name)
