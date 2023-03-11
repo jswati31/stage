@@ -1,0 +1,18 @@
+{
+
+    "model_type": "STAGE_LSTM",
+
+    "w_pog_loss": 0.001,
+
+    "num_iter": 50000,
+
+    "face_net_use_rnn": true,
+    "face_net_rnn_type": "LSTM",
+    "face_net_rnn_num_features": 128,
+    "face_net_use_head_pose_input": false,
+    "bidirectional": false,
+    "face_net_rnn_num_cells": 1,
+
+    "train_data_workers": 12,
+
+}

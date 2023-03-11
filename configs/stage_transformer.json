@@ -1,0 +1,19 @@
+{
+
+    "model_type": "STAGE_Transformer",
+
+    "w_pog_loss": 0.001,
+
+    "n_layers": 6,
+    "n_heads": 6,
+    "input_num_features": 128,
+    "key_dim": 64,
+    "query_dim": 64,
+    "value_dim": 64,
+
+    "num_iter": 50000,
+
+    "use_head_pose": false,
+    "train_data_workers": 12,
+
+}
