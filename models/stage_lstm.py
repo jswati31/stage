@@ -10,8 +10,7 @@ import numpy as np
 
 half_pi = 0.5 * np.pi
 
-# gazeclr_weights_path = "gazeclr_weights/gazeclr_inv_equiv.pth.tar"
-gazeclr_weights_path = "/home/myadav_umass_edu/gnn_gaze/codes/VideoBasedGazeEstimation/gazeclr_weights/gazeclr_inv_equiv.pth.tar"
+gazeclr_weights_path = "gazeclr_weights/gazeclr_inv_equiv.pth.tar"
 
 
 def build_model():
