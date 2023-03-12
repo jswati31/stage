@@ -59,6 +59,21 @@ class CheckpointsManager(object):
         logging.info('Loaded known model weights at step %d' % step_number)
         return step_number
 
+    def load_checkpoint_frompath(self, checkpoint_fpath):
+        assert os.path.isfile(checkpoint_fpath)
+        weights = torch.load(checkpoint_fpath)
+
+        try:
+            self.network.load_state_dict(weights)
+        except:
+            # If was stored using DataParallel but being read on 1 GPU
+            if not torch.cuda.is_available() or torch.cuda.device_count() == 1:
+                if next(iter(weights.keys())).startswith('module.'):
+                    weights = dict([(k[7:], v) for k, v in weights.items()])
+            self.network.load_state_dict(weights)
+
+        logging.info('Loaded known model weights at step %s' % checkpoint_fpath)
+
     def save_checkpoint(self, step_number):
         assert os.path.isdir(os.path.abspath(self.output_dir + '/../'))
         fname = ckpt_fmtstring % step_number

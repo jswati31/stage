@@ -46,7 +46,7 @@ def evaluation(test_data, trainer_model, curr_step, tensorboard, device, logger)
 
 
 def trainer(trainer_model, train_data, test_data, logger, config, optimizer, scheduler, checkpoint_manager, tensorboard,
-            device, wandb_logger):
+            device):
 
     logger.info('Training')
     running_losses = RunningStatistics()
@@ -110,7 +110,6 @@ def trainer(trainer_model, train_data, test_data, logger, config, optimizer, sch
             # log to tensorboard
             for k, v in running_losses.means().items():
                 tensorboard.add_scalar('train/%s' % k, v, current_step)
-                wandb_logger.log({'train/%s' % k: v})
 
         if current_step % config.print_freq_test == 0 and current_step > 0:
             torch.cuda.empty_cache()

@@ -19,6 +19,8 @@
 
     "screen_size": [128, 72],
 
+    "batch_size": 16,
+
     "load_step": 0,
 
     "num_iter": 50000,

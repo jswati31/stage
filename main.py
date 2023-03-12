@@ -7,10 +7,8 @@ torch.multiprocessing.set_sharing_strategy('file_system')
 import warnings
 warnings.filterwarnings('ignore')
 import os
-os.environ['WANDB_CACHE_DIR'] = "cache/"
 import json
 import torch
-import wandb
 import numpy as np
 import argparse
 from models import create_model
@@ -63,8 +61,6 @@ def main(config):
 
         logger.info('------- Initializing model --------')
 
-        wandb.watch(model, log='all')
-
         # Print model details
         parameters = filter(lambda p: p.requires_grad, model.parameters())
         parameters = sum([np.prod(p.size()) for p in parameters]) / 1_000_000
@@ -100,12 +96,12 @@ def main(config):
         #####################################################
         # call trainer
         T.trainer(model, train_data, test_data, logger, config, optimizer,
-                  scheduler, checkpoint_manager, tensorboard, device, wandb)
+                  scheduler, checkpoint_manager, tensorboard, device)
 
     #####################################################
     # call tester
     if config.load_checkpoint_path is not None:
-        checkpoint_manager.load_checkpoint(config.load_checkpoint_path)
+        checkpoint_manager.load_checkpoint_frompath(config.load_checkpoint_path)
         with open(os.path.join(config.save_path, "test_errors.txt"), "a") as text_file:
             text_file.write('Checkpoint {}'.format(config.load_checkpoint_path))
     else:
@@ -136,7 +132,7 @@ if __name__ == '__main__':
     parser.add_argument('--skip_training', action='store_true', help='skip_training')
     parser.add_argument('--opt', default="sgd", type=str, help='optimizer')
     parser.add_argument('--save_path', type=str, default=None, help='Path to save files')
-    parser.add_argument('--load_checkpoint_path', type=int, default=None, help='Path to test checkpoint')
+    parser.add_argument('--load_checkpoint_path', type=str, default=None, help='Path to test checkpoint')
     parser.add_argument('--load_step', type=int, default=0, help='Path to test checkpoint')
 
     parser.add_argument('--spatial_model', type=str, default="proposed", choices=['dual', 'cross',
@@ -173,12 +169,6 @@ if __name__ == '__main__':
         # writing config
         save_configs(config.save_path, config)
         print('Written Config file at %s' % config.save_path)
-        ###############
-
-        run = wandb.init(entity="name", project="STAGE", name=config.save_path, sync_tensorboard=True)
-        wandb.config.update(vars(config))
-        run.log_code(".")
-
         ###############
 
     main(config)

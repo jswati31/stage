@@ -39,7 +39,6 @@ class Dual_SAM(nn.Module):
     )
 
     self.att = nn.Conv2d(self.dim, 1, kernel_size=1, padding=0)
-    self.fc1 = nn.Linear(self.input_dim // 2, 6)
 
   def forward(self, input_1, input_2):
     batch_size, t, K1, H, W = input_1.size()

@@ -13,6 +13,6 @@
     "bidirectional": false,
     "face_net_rnn_num_cells": 1,
 
-    "train_data_workers": 12,
+    "train_data_workers": 12
 
 }
