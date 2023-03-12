@@ -47,7 +47,7 @@ python gp_personalization.py --config_json configs/<json_file> --k <number_of_sh
 
 ## Pre-trained Models
 
-You can download pretrained models [here]().
+You can download pretrained models [here](https://drive.google.com/drive/folders/1kV3K6OMwgddxKNbdHmRnG3ytAhAVvumT?usp=share_link).
 
 ## Questions?
 
