@@ -63,8 +63,12 @@ def train_gp(train_data, trainer_model, device, config):
 
     epochs = 2
     iter_num = 0
-    for param in trainer_model.module.parameters():
-        param.requires_grad = False
+    try:
+        for param in trainer_model.module.parameters():
+            param.requires_grad = False
+    except:
+        for param in trainer_model.parameters():
+            param.requires_grad = False
 
     total_iters = 50000
     for ep in range(epochs):
@@ -131,7 +135,7 @@ def train_gp_eve(config, model):
                                   types_of_stimuli=config.train_stimuli, transforms=None)
 
     train_dataloader = DataLoader(train_dataset,
-                                 batch_size=config.batch_size,
+                                 batch_size=1,
                                  shuffle=True,
                                  drop_last=False,
                                  num_workers=config.test_data_workers,
@@ -176,7 +180,6 @@ if __name__ == '__main__':
 
     parser.add_argument('--config_json', type=str, help='Path to config in JSON format')
     parser.add_argument('--gp_model_name', type=str, help='name of base GP model')
-    parser.add_argument('--batch_size', type=int, default=16, help='batch size')
     parser.add_argument('--load_checkpoint_path', type=str, default=None, help='Path to STAGE checkpoint')
     parser.add_argument('--spatial_model', type=str, default="proposed", choices=['dual', 'cross',
                                                                                   'proposed', 'proposed_nodual'],

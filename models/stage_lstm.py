@@ -117,7 +117,7 @@ class STAGE_LSTM(nn.Module):
 
         inter_Feats = x
 
-        if self.config.spatial_model == "duda":
+        if self.config.spatial_model == "dual":
             # 2D positional embeddings
             x = self.spatial_info(x)
 

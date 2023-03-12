@@ -4,7 +4,7 @@
 This repository is the official implementation of [STAGE](). 
 
 ## Requirements
-The code is tested with Python 3.7.10 and torch 1.18.1.
+The code is tested with Python 3.7.10 and torch 1.12.1.
 
 To install all the packages:
 

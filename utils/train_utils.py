@@ -5,7 +5,7 @@ from torch.utils.data import DataLoader, Subset
 import numpy as np
 from .core_utils import my_collate
 
-def get_training_batches(train_data_dicts, device, augm=False):
+def get_training_batches(train_data_dicts, device):
     """Get training batches of data from all training data sources."""
     out = {}
     for tag, data_dict in train_data_dicts.items():
@@ -19,8 +19,6 @@ def get_training_batches(train_data_dicts, device, augm=False):
             except StopIteration:
                 del data_dict['data_iterator']
                 torch.cuda.empty_cache()
-                if augm is True:
-                    data_dict['dataloader'].dataset.increment_difficulty()
                 data_dict['data_iterator'] = iter(data_dict['dataloader'])
 
         # Move tensors to GPU

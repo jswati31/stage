@@ -75,7 +75,7 @@ def trainer(trainer_model, train_data, test_data, logger, config, optimizer, sch
         trainer_model.zero_grad()
 
         # get input data
-        full_input_dict = get_training_batches(train_data, device, config.augmentation)
+        full_input_dict = get_training_batches(train_data, device)
         assert len(full_input_dict) == 1  # for now say there's 1 training data source
         full_input_dict = next(iter(full_input_dict.values()))
 

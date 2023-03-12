@@ -132,10 +132,6 @@ class EyediapLoader(data.Dataset):
         gaze_pitchyaw = np.array(gaze_pitchyaw).astype(np.float32)
         validity = np.array(validity).astype(np.int)
 
-        if self.config.reversal:
-            frames_reverse = np.flip(source_video.copy(), 0)
-            subentry['reverse_face_patch'] = self.preprocess_frames(frames_reverse)
-
         source_video = self.preprocess_frames(source_video)
 
         subentry['face_patch'] = source_video
