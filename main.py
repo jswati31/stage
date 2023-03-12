@@ -175,7 +175,7 @@ if __name__ == '__main__':
         print('Written Config file at %s' % config.save_path)
         ###############
 
-        run = wandb.init(entity="swjindal", project="VideoBased", name=config.save_path, sync_tensorboard=True)
+        run = wandb.init(entity="name", project="STAGE", name=config.save_path, sync_tensorboard=True)
         wandb.config.update(vars(config))
         run.log_code(".")
 
