@@ -1,5 +1,5 @@
 
-# Spatial Attention and Gaussian Process for Video Gaze Estimation
+# Spatial Attention and Gaussian Processes for Video Gaze Estimation
 
 This repository is the official implementation of [STAGE](). 
 
