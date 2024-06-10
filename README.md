@@ -1,7 +1,7 @@
 
 # Spatial Attention and Gaussian Processes for Video Gaze Estimation
 
-This repository is the official implementation of [STAGE](). 
+This repository is the official implementation of [STAGE](https://arxiv.org/abs/2404.05215). 
 
 ## Requirements
 The code is tested with Python 3.7.10 and torch 1.12.1.
