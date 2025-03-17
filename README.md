@@ -21,7 +21,7 @@ pip install -r requirements.txt
 
 ## Training STAGE
 
-* Download [GazeCLR](https://drive.google.com/file/d/10K_AwVH6H_0P77lR0XHl3iDsfiep2YTP/view) weights and store in "gazeclr_weights" folder.
+* Download [GazeCLR](https://drive.google.com/file/d/17_BdB-mnsZEw33yaqHZxJYX8YLArfcq9/view?usp=drive_link) weights and store in "gazeclr_weights" folder.
 
 For cross-dataset:
 ```
@@ -47,7 +47,7 @@ python gp_personalization.py --config_json configs/<json_file> --k <number_of_sh
 
 ## Pre-trained Models
 
-You can download pretrained models [here](https://drive.google.com/drive/folders/1kV3K6OMwgddxKNbdHmRnG3ytAhAVvumT?usp=share_link).
+You can download pretrained models [here](https://drive.google.com/drive/folders/16re0UoAnmaqQcqjXSkQ8u63iz_Tm9fwd?usp=sharing).
 
 ## Questions?
 
